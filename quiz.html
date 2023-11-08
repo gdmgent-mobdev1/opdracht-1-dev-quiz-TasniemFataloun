@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz App</title>
+</head>
+<body>
+    <div id="settings">
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Difficult</option>
+        </select>
+
+        <label for="category">Select Category:</label>
+        <select id="category">
+            <option value="linux">Linux</option>
+            <option value="sql">Sql</option>
+            <option value="code">Code</option>
+        </select>
+
+        <label for="numQuestions">Number of Questions:</label>
+        
+        <select id="number">
+        </select>
+
+        <button id="startQuiz">Start Quiz</button>
+    </div>
+
+    <div id="quiz" style="display: none;">
+        <div id="question">
+            <p id="questionText"></p>
+        </div>
+        <div id="answers">
+          
+        </div>
+        <div id="progress">
+            <p id="questionProgress"></p>
+        </div>
+        <button id="nextQuestion">Next Question</button>
+    </div>
+
+    <div id="result" style="display: none;">
+        <h2>Quiz Result</h2>
+        <p id="score">Your Score: <span id="scoreValue"></span></p>
+    </div>
+
+    <script type="module" src="./src/app.ts"></script>
+</body>
+</html>

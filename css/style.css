@@ -1,0 +1,110 @@
+:root {
+    --red: hsl(358, 67%, 41%); 
+    --geel: hsl(49, 72%, 51%); 
+    --beige: hsl(42, 58%, 89%);
+
+    --mint-green: #BEE9E8;
+    --moonstone: #62B6CB;
+    --donkerBlauw: #1B4965; 
+    --lichtBlauw: #CAE9FF; 
+    --PictonBlue: #5FA8D3; 
+  }
+
+  body{
+    background-color: #350a5f;
+    color: white;
+  }
+  
+header{
+    background-color: var(--PictonBlue);
+}
+
+
+.logo img{
+    width: 8rem;
+    height: 6rem;
+    border: 2px red solid;
+
+}
+  
+.button{
+    background-color: var(--donkerBlauw);
+    border-radius: 0.5rem;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    height: 3rem;
+    margin: 2rem 0;
+    padding: 0 25px;
+    width: 10rem;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+    display: inline-flex;
+    justify-content: center; 
+    align-items: center
+}
+
+.button p a {
+    color: var(--lichtBlauw);
+    text-decoration: none;  
+}
+
+  
+.photo img{
+    width: 200%;
+    height: 150%;
+    border: 2px red solid;
+}
+  
+.flex{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+nav {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 1.2rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.photo{
+    width: 100%;
+    height: 100%;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin-right: 1rem;
+        margin-bottom: 10px;
+    }
+
+}
