@@ -1,15 +1,21 @@
- type QuizSettings = {
+type QuizSettings = {
     difficulty: string;
     category: string;
     numQuestions: string;
 };
 
-
- let quizSettings: QuizSettings = {
+//default quizSettings
+let quizSettings: QuizSettings = {
     difficulty: "Easy", 
-    category: "code", 
+    category: "Code", 
     numQuestions: "5", 
 };
 
 
-export {quizSettings,QuizSettings}
+type UserNameScore = {
+    name: string;
+    score: [];
+}
+
+
+export {quizSettings,QuizSettings, UserNameScore}

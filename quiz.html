@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Quiz App</title>
-</head>
-<body>
-    <div id="settings">
-        <label for="difficulty">Select Difficulty:</label>
+  </head>
+  <body class="bodyQuiz">
+    <div id="body">
+      <div id="settings" style="display: flex">
+        <!-- input enter your name -->
+        <label for="name">Enter your name</label>
+        <input type="text" class="nameUser" />
+
+        <label for="difficulty">Select Difficulty</label>
         <select id="difficulty">
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Difficult</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Difficult</option>
         </select>
 
-        <label for="category">Select Category:</label>
+        <label for="category">Select Category</label>
         <select id="category">
-            <option value="linux">Linux</option>
-            <option value="sql">Sql</option>
-            <option value="code">Code</option>
+          <option value="linux">linux</option>
+          <option value="SQL">SQL</option>
+          <option value="Code">Code</option>
+          <option value="DevOps">DevOps</option>
+          <option value="Docker">Docker</option>
         </select>
 
-        <label for="numQuestions">Number of Questions:</label>
-        
-        <select id="number">
-        </select>
+        <label for="numQuestions">Number of Questions</label>
+        <select id="numberQues"></select>
 
         <button id="startQuiz">Start Quiz</button>
-    </div>
+      </div>
 
-    <div id="quiz" style="display: none;">
-        <div id="question">
-            <p id="questionText"></p>
-        </div>
-        <div id="answers">
-          
-        </div>
-        <div id="progress">
-            <p id="questionProgress"></p>
-        </div>
-        <button id="nextQuestion">Next Question</button>
-    </div>
+      <div id="quiz" style="display: none">
+        <section id="category">
+          <p></p>
+        </section>
+        <section id="timerText">
+          <p>Timer</p>
+        </section>
 
-    <div id="result" style="display: none;">
-        <h2>Quiz Result</h2>
-        <p id="score">Your Score: <span id="scoreValue"></span></p>
+        <section>
+          <p id="questionNumber">question:</p>
+        </section>
+
+        <section id="question">
+          <p id="questionText"></p>
+        </section>
+
+        <section id="answers">
+          <ul></ul>
+        </section>
+        <section id="btn">
+          <button id="prev">Previous Question</button>
+          <button id="end">End Quiz</button>
+          <button id="next">Next Question</button>
+        </section>
+      </div>
+
+      <div id="result" style="display: none">
+        <div class="containerResultEnd">
+          <h2>Quiz Result</h2>
+          <p id="score">Your Score: <span id="scoreValue"></span></p>
+          <div id="answers_list">
+            <h2>Your answers</h2>
+          </div>
+        </div>
+
+        <button id="restart">restart</button>
+      </div>
     </div>
 
     <script type="module" src="./src/app.ts"></script>
-</body>
+  </body>
 </html>

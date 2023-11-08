@@ -1,6 +1,6 @@
 let quizSettings = {
     difficulty: "Easy",
-    category: "code",
+    category: "Code",
     numQuestions: "5",
 };
 export { quizSettings };
