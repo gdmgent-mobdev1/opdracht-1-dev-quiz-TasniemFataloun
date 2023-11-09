@@ -12,10 +12,9 @@ let quizSettings: QuizSettings = {
 };
 
 
-type UserNameScore = {
+type UserName = {
     name: string;
-    score: [];
 }
 
 
-export {quizSettings,QuizSettings, UserNameScore}
+export {quizSettings,QuizSettings, UserName}

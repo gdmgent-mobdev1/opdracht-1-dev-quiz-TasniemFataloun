@@ -1,12 +1,12 @@
 import "../css/reset.css";
 import "../css/style.css";
 
-import { quizSettings, UserNameScore } from "../util/types";
+import { quizSettings, UserName } from "../util/types";
 import {
   setSettings,
   loadSettings,
-  saveScore,
   loadScores,
+  saveUserName,
 } from "../util/localStorag";
 import { getData } from "../util/api";
 
@@ -27,11 +27,9 @@ let quizUi: QuizUi = {
   selectedAnswer: "",
 };
 
-//local storage + name + Score
-let userNameScore: UserNameScore = {
-  name: "",
-  score: [],
-};
+let userName: UserName[] = [];
+
+
 
 let arrayQuizSetting: any = [];
 let remainingTime = 10;
@@ -69,14 +67,18 @@ const getLoadingHTML = () => {
 //start
 const startQuizButton = document.getElementById("startQuiz");
 
-console.log(loadScores().name);
 
 startQuizButton?.addEventListener("click", async () => {
-  const username = document.querySelector(".nameUser") as HTMLInputElement;
-  userNameScore.name = username.value;
-  localStorage.setItem("User_Setting", JSON.stringify(userNameScore));
+  const userNameInput = document.querySelector(".nameUser") as HTMLInputElement;
+  const userNameText = userNameInput.value;
+  console.log(userNameText);
+  //save user name in array
+  userName.push({ name: userNameText });
+  saveUserName(userName);
 
-  let body = document.getElementById("body");
+  
+  //let body = document.getElementById("body");
+
   //diff, categ, answ
   const settings = document.getElementById("settings");
   const quiz = document.getElementById("quiz");
@@ -158,7 +160,7 @@ const SetQuiz = () => {
     let liAnswers = document.createElement("li");
     liAnswers.classList.add("liAnswers");
 
-    let p = document.createElement("p");
+    let p = document.createElement("p2");
 
     p.classList.add("value-answers");
 
@@ -251,9 +253,6 @@ end?.addEventListener("click", () => {
   // filter array that only has correct answers
   // vraag per vraag kijken of het antwoord juist is
 
-  let h2Result = document.getElementById("h2");
-  if (h2Result) h2Result.textContent = `Your Score ${userNameScore.name}`;
-
   const correctAnswers = arrayQuizSetting.filter((question: any) => {
     return (
       question.correct_answers[`${question.selectedAnswer}_correct`] === "true"
@@ -269,7 +268,6 @@ end?.addEventListener("click", () => {
     result.style.display = "block";
     scoreValue.textContent = `${score}%`;
 
-    saveScore(score);
   }
   clearTimeout(questionTimer);
 
@@ -339,22 +337,33 @@ end?.addEventListener("click", () => {
     h2.textContent = q.question;
     listQuesAndAnswersEnd.appendChild(h2); */
 
-    let h2Result = document.getElementById("h2Result");
-    let containerResultEnd= document.getElementById("containerResultEnd");
-
 
     // if score is < 50% then show message and if score > 50% then show message in p under h2 
     let hehresult = document.querySelector(".hehresult");
-    let p = document.createElement("p");
+    let p2 = document.createElement("p");
+    p2.classList.add("p");
+    
+    // Create a Set to store unique scores
+    let uniqueScores = new Set();
+    
     if (score < 50) {
-      p.textContent = "You can do better!";
+     p2.textContent = "You can do better!";
+    
     } if (score >= 50) {
-      p.textContent = "Good job!";
+     p2.textContent = "Good job!";
     }
-    hehresult?.appendChild(p);
+    
+    // Add the score to the Set if it has not been encountered before
+    if (!uniqueScores.has(score)) {
+     hehresult?.appendChild(p2);
+     uniqueScores.add(score);
+    }
 
-    if (h2Result) h2Result.textContent = `Your Score, ${userNameScore.name}`;
-    if (containerResultEnd) containerResultEnd.textContent = `Your Score ${userNameScore.name}`;
+    let h2Result = document.getElementById("h2Result");
+    let containerResultEnd= document.getElementById("containerResultEnd");
+    //current user name in h2
+    if (h2Result) h2Result.textContent = `Hello ${userName[0].name}!`;
+    if (containerResultEnd) containerResultEnd.textContent = `Your Score ${userName[0].name}!`; 
 
     //show question 
     let h2 = document.createElement("h2");
@@ -380,6 +389,23 @@ restart?.addEventListener("click", () => {
 
   if (settings) settings.style.display = "flex";
   if (result) result.style.display = "none";
+  //clear the array of the quiz settings and the current question index to start the quiz again
   arrayQuizSetting = [];
   currentQuestionIndex = 0;
+  let answersListRemove = document.getElementById("answers_list");
+  if (answersListRemove) {
+    answersListRemove.innerHTML = "";
+  }
+  //clear p 
+  let p2 = document.querySelector(".p2");
+  if (p2) {
+    p2.innerHTML = "";
+  }
+
+
+
+
+
+
+
 });

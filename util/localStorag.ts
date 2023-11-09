@@ -10,7 +10,7 @@ function setSettings(settings: QuizSettings) {
 // Als er geen instellingen zijn opgeslagen, wordt de default gebruikt.
 // Json --> om een object te krijgen
 function loadSettings(): QuizSettings {
-  const savedSettings = localStorage.getItem("quizSetting");
+  const savedSettings = localStorage.getItem("Quiz_Setting");
   return savedSettings ? JSON.parse(savedSettings) : quizSettings;
 }
 
@@ -19,23 +19,22 @@ function loadScores() {
   return savedScores ? JSON.parse(savedScores) : null;
 }
 
-//Hou de scores bij in LocalStorage zodat je een klassement kan opstellen.
-function saveScore(score: number) {
-  if (loadScores().name) {
-    if (loadScores().scores) {
-      const scoresArray = JSON.parse(loadScores().scores);
-      scoresArray.push(score);
-      localStorage.setItem("User_Setting", JSON.stringify(scoresArray));
-    } else {
-      localStorage.setItem("User_Setting", JSON.stringify([]));
-    }
-  }
-  console.log(loadScores().name);
+// save username in array that has object for every user name in local storage
+
+function saveUserName(userName: any) {
+  localStorage.setItem("userName", JSON.stringify(userName));
+  //save after refresh  
 }
 
-// save name user in localstorage
-/* function saveName(name: string) {
-    localStorage.setItem("name", name);
-} */
 
-export { setSettings, loadSettings, saveScore, loadScores };
+
+
+
+//save scores in array
+function saveScores(scores: any) {
+  localStorage.setItem("scores", JSON.stringify(scores));
+  //save after refresh
+
+}
+
+export { setSettings, loadSettings, loadScores, saveScores,saveUserName };

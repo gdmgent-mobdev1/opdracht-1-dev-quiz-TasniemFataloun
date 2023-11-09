@@ -101,6 +101,8 @@ nav {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  border: none;
 }
 
 .specialButtons p a {
@@ -392,7 +394,7 @@ nav {
 .listQuesAndAnswersEnd {
   margin-bottom: 4rem;
   background-color: var(--primary-color);
-  width: 80%;
+  width: 60%;
   height: 100%;
 }
 .listQuesAndAnswersEnd h2{
@@ -540,7 +542,6 @@ button:hover{
   .specialButtons {
     background-color: var(--yellow);
     width: 100%;
-    border: none;
   }
 
   #settings {
