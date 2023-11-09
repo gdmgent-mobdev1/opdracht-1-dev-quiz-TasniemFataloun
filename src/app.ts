@@ -123,7 +123,7 @@ let currentQuestionIndex = 0;
 
 const SetQuiz = () => {
   startQuestionTimer();
-  prev.innerHTML = `Previous Question ${currentQuestionIndex}`;
+  prev.textContent = `Previous Question ${currentQuestionIndex}`;
 
   if (prev) {
     prev.disabled = currentQuestionIndex === 0;
@@ -147,7 +147,7 @@ const SetQuiz = () => {
     }`;
 
   // om bij de starten van de quiz de antwoorden van de vorige te verwijderen
-  if (answers) answers.innerHTML = "";
+  if (answers) answers.textContent = "";
 
   const answer = currentQuestion.answers;
   //key: answer_a, value: de value van de antwoord
@@ -188,7 +188,7 @@ let questionTimer: any;
 
 function updateTimerLayout(time: number) {
   const timerText = document.getElementById("timerText");
-  if (timerText) timerText.textContent = `time:${time}`; //null
+  if (timerText) timerText.textContent = `Time:${time}`; //null
 }
 
 function startQuestionTimer() {
@@ -207,7 +207,7 @@ function startQuestionTimer() {
       } else {
         moveToNextQuestion();
       }
-      moveToNextQuestion();
+      //moveToNextQuestion();
     }
   }, 1000);
 }
@@ -218,6 +218,10 @@ function moveToNextQuestion() {
   if (currentQuestionIndex < arrayQuizSetting.length - 1) {
     //// Dit komt omdat array-indexen in JavaScript op 0 zijn gebaseerd, wat betekent dat de laatste index van een array is altijd één minder dan de lengte ervan.
     currentQuestionIndex++;
+    console.log("heheheheeh");
+    
+    console.log(currentQuestionIndex);
+    
     SetQuiz();
   }
 }
@@ -246,14 +250,17 @@ end?.addEventListener("click", () => {
 
   // filter array that only has correct answers
   // vraag per vraag kijken of het antwoord juist is
+
+  let h2Result = document.getElementById("h2");
+  if (h2Result) h2Result.textContent = `Your Score ${userNameScore.name}`;
+
   const correctAnswers = arrayQuizSetting.filter((question: any) => {
     return (
       question.correct_answers[`${question.selectedAnswer}_correct`] === "true"
     );
   }).length;
 
-  const score = (correctAnswers / totalQuestions) * 100;
-  
+  let score = (correctAnswers / totalQuestions) * 100;
 
   const result = document.getElementById("result");
   const scoreValue = document.getElementById("scoreValue");
@@ -270,11 +277,18 @@ end?.addEventListener("click", () => {
   const yourAnswersList = document.getElementById("answers_list");
   arrayQuizSetting.forEach((q: any) => {
     let bodyEnd = document.getElementById("body");
-    const listQuesAndAnswersEnd = document.createElement("div");
-    listQuesAndAnswersEnd.classList.add("listQuesAndAnswersEnd");
+     const listQuesAndAnswersEnd = document.createElement("div");
+    listQuesAndAnswersEnd.classList.add("listQuesAndAnswersEnd"); 
     // remove body id and instead another id
+
     bodyEnd?.removeAttribute("id");
     bodyEnd?.setAttribute("id", "bodyEnd");
+
+
+    //
+
+
+
 
     const answersListEnd = document.createElement("ul");
 
@@ -282,7 +296,6 @@ end?.addEventListener("click", () => {
     for (const i in q.answers) {
       if (q.answers[i] !== null) {
         const answerItem = document.createElement("li");
-        answerItem.classList.add("answerItem");
         answerItem.textContent = q.answers[i];
 
         if (i == q.selectedAnswer) {
@@ -293,7 +306,7 @@ end?.addEventListener("click", () => {
             answerItem.style.border = "2px green solid";
             answerItem.style.color = "green";
           } else {
-            answerItem.style.color = "red";
+            //answerItem.style.border = "red";
             // Indien er een fout antwoord werd gegeven dan wordt ook hier het correct antwoord getoond.
 
             const correctAnswer = document.createElement("span");
@@ -306,9 +319,12 @@ end?.addEventListener("click", () => {
         if (q.correct_answers[`${i}_correct`] === "true") {
           answerItem.style.border = "2px green solid";
           answerItem.style.color = "green";
+          answerItem.style.borderRadius = "5px"; 
           //wrong answer color red
         } else {
           answerItem.style.color = "red";
+          answerItem.style.border = "2px red solid";
+          answerItem.style.borderRadius = "5px"; 
         }
 
         answersListEnd.appendChild(answerItem);
@@ -319,7 +335,31 @@ end?.addEventListener("click", () => {
       }
     }
 
-    listQuesAndAnswersEnd.innerHTML = `<h2>${q.question}:</h2>`;
+/*     let h2 = document.createElement("h2");
+    h2.textContent = q.question;
+    listQuesAndAnswersEnd.appendChild(h2); */
+
+    let h2Result = document.getElementById("h2Result");
+    let containerResultEnd= document.getElementById("containerResultEnd");
+
+
+    // if score is < 50% then show message and if score > 50% then show message in p under h2 
+    let hehresult = document.querySelector(".hehresult");
+    let p = document.createElement("p");
+    if (score < 50) {
+      p.textContent = "You can do better!";
+    } if (score >= 50) {
+      p.textContent = "Good job!";
+    }
+    hehresult?.appendChild(p);
+
+    if (h2Result) h2Result.textContent = `Your Score, ${userNameScore.name}`;
+    if (containerResultEnd) containerResultEnd.textContent = `Your Score ${userNameScore.name}`;
+
+    //show question 
+    let h2 = document.createElement("h2");
+    h2.textContent = q.question;
+    listQuesAndAnswersEnd.appendChild(h2);
     listQuesAndAnswersEnd.appendChild(answersListEnd);
     yourAnswersList?.appendChild(listQuesAndAnswersEnd);
   });

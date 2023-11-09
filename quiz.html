@@ -29,46 +29,50 @@
         <label for="numQuestions">Number of Questions</label>
         <select id="numberQues"></select>
 
-        <button id="startQuiz">Start Quiz</button>
+        <button id="startQuiz" class="specialButtons">Start Quiz</button>
       </div>
 
       <div id="quiz" style="display: none">
-        <section id="category">
-          <p></p>
-        </section>
-        <section id="timerText">
-          <p>Timer</p>
-        </section>
+          <div class="flexTimer">
+            <section id="category">
+              <p></p>
+            </section>
+            <p id="questionNumber">question:</p>
+            <section id="timerText">
+              <p>Timer</p>
+            </section>
+            </div>
 
-        <section>
-          <p id="questionNumber">question:</p>
-        </section>
 
-        <section id="question">
-          <p id="questionText"></p>
-        </section>
 
-        <section id="answers">
-          <ul></ul>
-        </section>
-        <section id="btn">
-          <button id="prev">Previous Question</button>
-          <button id="end">End Quiz</button>
-          <button id="next">Next Question</button>
-        </section>
+          <section id="question">
+            <p id="questionText"></p>
+          </section>
+
+          <section id="answers">
+            <ul></ul>
+          </section>
+          <section id="btn">
+            <button id="prev" class="button">Previous Question</button>
+            <button id="end" class="button">End Quiz</button>
+            <button id="next" class="button">Next Question</button>
+          </section>
+        </div>
       </div>
 
       <div id="result" style="display: none">
-        <div class="containerResultEnd">
-          <h2>Quiz Result</h2>
-          <p id="score">Your Score: <span id="scoreValue"></span></p>
-          <div id="answers_list">
-            <h2>Your answers</h2>
+          <div class="hehresult">
+            <h2 id="h2Result"></h2>
+            <p id="score">Your Score: <span id="scoreValue"></span></p>
           </div>
-        </div>
-
-        <button id="restart">restart</button>
-      </div>
+          <div class="fkndn">
+            <h2>Your answers</h2>
+            <div class="containerResultEnd">
+              <div id="answers_list">
+              </div>
+              <button id="restart" class="specialButtons">restart</button>
+          </div>
+          
     </div>
 
     <script type="module" src="./src/app.ts"></script>
