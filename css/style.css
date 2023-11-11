@@ -223,26 +223,22 @@ nav {
 }
 
 #quiz {
-  /*     display: flex;
- align-items: center;
- justify-content: center; */
   width: 60%;
   height: 90%;
   font-size: 18px;
   background-color: white;
   position: relative;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-  border: 2px green solid;
+  padding: 2rem;
 }
 
-
-
-
-.flexTimer{
+.timerQuesCateg{
   display: flex;
   position: relative;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
+
 #quiz #category{
   width: 100%;
 }
@@ -281,15 +277,15 @@ nav {
 /* question
  */
 #quiz #question {
-  width: 100%;
+
   height: 4rem;
   text-align: center;
   padding: 5px;
   font-weight: bold;
-  position: absolute;
   margin-bottom: 2rem;
   overflow: auto;
   border: 1px var(--primary-color) solid;
+
 }
 
 #quiz #question #questionText {
@@ -301,7 +297,6 @@ nav {
 #quiz #answers {
   width: 100%;
   position: relative;
-  top: 10%;
   overflow: auto;
 }
 
@@ -319,7 +314,7 @@ nav {
 
 #quiz #answers ul .liAnswers {
   width: 100%;
-  min-height: 3rem;
+  min-height: 3.5rem;
   font-size: var(--text);
   border-radius: 0.5rem;
   background-color: var(--primary-color);
@@ -343,13 +338,15 @@ nav {
 #quiz #answers ul .liAnswers:hover {
   font-weight: bold;
   cursor: pointer;
-  border: 2px var(--yellow) solid;
   transition: 0.3s;
+  background-color: var(--yellow);
 }
 
 .selected {
   font-weight: bold;
-  border: 2px var(--yellow) solid;
+  border: 2px var(--yellow) solid !important;
+  background-color: var(--yellow) !important;
+
 }
 
 #quiz #btn {
@@ -357,10 +354,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 4rem;
   position: absolute;
   bottom: 0;
-  margin-top: 2rem;
-  margin-top: 5rem;
+  right: 0;
+  left: 0;
+  padding: 1rem 2rem;
+
 }
 #quiz #btn button {
   width: 20%;
@@ -384,11 +384,13 @@ nav {
   cursor: not-allowed;
 }
 
-.dis {
-  opacity: 0.5;
-  cursor: not-allowed;
+.multipleAnswers{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(88, 88, 88);
+  color:var(--yellow); 
 }
-
 
 /*ENd*/
 .listQuesAndAnswersEnd {
@@ -568,7 +570,7 @@ button:hover{
   
   #quiz {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     font-size: 18px;
   }
   #quiz #timerText {
@@ -582,11 +584,23 @@ button:hover{
   }
 
   #quiz #btn{
-    flex-direction: column;
     align-items: center;
     position: relative;
     top: 0;
     margin-bottom: 0;
+    margin-top: 0;
     padding: 1rem;
+    flex-direction: column;
+    width: 100%;
   }
+
+  #quiz #btn button {
+    width: 100%;
+  }
+
+  .listQuesAndAnswersEnd{
+    width: 100%;
+    height: 100%;
+  }
+  
 }

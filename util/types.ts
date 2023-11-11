@@ -11,10 +11,9 @@ let quizSettings: QuizSettings = {
     numQuestions: "5", 
 };
 
-
-type UserName = {
+/* type UserName = {
     name: string;
 }
+ */
 
-
-export {quizSettings,QuizSettings, UserName}
+export {quizSettings,QuizSettings }

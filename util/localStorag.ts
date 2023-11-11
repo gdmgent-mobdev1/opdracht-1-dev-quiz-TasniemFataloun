@@ -2,7 +2,7 @@ import { QuizSettings, quizSettings } from "./types";
 
 //localStorage.setItem om het instellingenobject (cat, answers, ..) op te slaan als een JSON-tekenreeks in de lokale opslag van de browser.
 function setSettings(settings: QuizSettings) {
-  localStorage.setItem("quizSettings", JSON.stringify(settings));
+  localStorage.setItem("Quiz_Setting", JSON.stringify(settings));
 }
 
 //loadsetting gebruikt om QuizSettings achtergehaald vanuit localstorage
@@ -14,27 +14,25 @@ function loadSettings(): QuizSettings {
   return savedSettings ? JSON.parse(savedSettings) : quizSettings;
 }
 
-function loadScores() {
-  const savedScores = localStorage.getItem("User_Setting");
-  return savedScores ? JSON.parse(savedScores) : null;
-}
-
 // save username in array that has object for every user name in local storage
+function saveUserSettings(name:any){
+  const userSettingsJSON = localStorage.getItem('UserSettings');
+  const userSettings = userSettingsJSON ? JSON.parse(userSettingsJSON) : [];
+  const existingUserIndex = userSettings.findIndex((user: any) => user.name === name);
+  if (existingUserIndex === -1) {
+      userSettings.push({ name: name, score: [] });
+      localStorage.setItem('UserSettings', JSON.stringify(userSettings));
 
-function saveUserName(userName: any) {
-  localStorage.setItem("userName", JSON.stringify(userName));
-  //save after refresh  
+    }
+}
+function saveScore(score:any,name:any){
+  const userSettingsJSON = localStorage.getItem('UserSettings');
+  const userSettings = userSettingsJSON ? JSON.parse(userSettingsJSON) : [];
+  const existingUserIndex = userSettings.findIndex((user: any) => user.name === name);
+  if (existingUserIndex !== -1) {
+      userSettings[existingUserIndex].score.push(score);
+      localStorage.setItem('UserSettings', JSON.stringify(userSettings));  
+    }
 }
 
-
-
-
-
-//save scores in array
-function saveScores(scores: any) {
-  localStorage.setItem("scores", JSON.stringify(scores));
-  //save after refresh
-
-}
-
-export { setSettings, loadSettings, loadScores, saveScores,saveUserName };
+export { setSettings, loadSettings, saveUserSettings,saveScore };
