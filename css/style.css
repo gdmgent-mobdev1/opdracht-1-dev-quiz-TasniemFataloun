@@ -8,12 +8,14 @@
   --red: hsl(358, 67%, 41%);
   --yellow: hsl(49, 72%, 51%);
   --beige: hsl(42, 58%, 89%);
+  --white: hsl(0, 0%, 100%);
 
   --button: hsl(250, 52%, 53%);
 
   --h1: 3rem;
   --h2: 1.5rem;
   --text: 1.1rem;
+
 }
 
 h1 {
@@ -101,13 +103,13 @@ nav {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--white);
   border: none;
 }
 
 .specialButtons p a {
   text-decoration: none;
-  color: white;
+  color: var(--white);
 }
 
 .specialButtons:hover {
@@ -128,9 +130,6 @@ nav {
   height: 100%;
 }
 
-/*
- * Loading indicator
- */
 .loading {
   display: block;
   width: 4rem;
@@ -161,7 +160,7 @@ nav {
   width: 60%;
   height: 90%;
   font-size: 18px;
-  background-color: white;
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -177,7 +176,7 @@ nav {
   padding: 5px;
   margin-top: 0.3rem 2rem;
   margin-bottom: 2rem;
-  color: white;
+  color: var(--white);
   border-radius: 0.5rem;
   border: none;
 }
@@ -201,7 +200,7 @@ nav {
   padding: 5px;
   margin-top: 0.3rem 2rem;
   margin-bottom: 2rem;
-  color: white;
+  color: var(--white);
   border-radius: 0.5rem;
 }
 #settings #startQuiz {
@@ -210,7 +209,7 @@ nav {
   padding: 7px;
   margin: 5px;
   background-color: var(--button);
-  color: white;
+  color: var(--white);
   font-size: 15px;
   border-radius: 0.5rem;
   border: none;
@@ -224,47 +223,42 @@ nav {
 
 #quiz {
   width: 60%;
-  height: 90%;
+  height: 92%;
   font-size: 18px;
-  background-color: white;
+  background-color: var(--white);
   position: relative;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
   padding: 2rem;
 }
 
-.timerQuesCateg{
+.timerQuesCateg {
   display: flex;
   position: relative;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
 
-#quiz #category{
+#quiz #category {
   width: 100%;
 }
 
 #quiz #category p {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--white);
   text-align: left;
   font-weight: bold;
   width: 100%;
   height: 100%;
   padding: 0.5rem;
-  
-/*   top: 4%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   border-radius: 0.5rem;
 }
 
-#questionNumber{
+#questionNumber {
   width: 100%;
   text-align: center;
   text-align: center;
   font-weight: bold;
   padding: 0.5rem;
-
 }
 
 #quiz #timerText {
@@ -274,22 +268,18 @@ nav {
   width: 100%;
 }
 
-/* question
- */
 #quiz #question {
-
   height: 4rem;
   text-align: center;
   padding: 5px;
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   overflow: auto;
   border: 1px var(--primary-color) solid;
-
 }
 
 #quiz #question #questionText {
-  color: white;
+  color: var(--white);
   font-size: var(--text);
   color: var(--primary-color);
 }
@@ -309,7 +299,7 @@ nav {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin: 2rem 0 4rem 0;
+  margin: 1.4rem 0 4rem 0;
 }
 
 #quiz #answers ul .liAnswers {
@@ -318,7 +308,7 @@ nav {
   font-size: var(--text);
   border-radius: 0.5rem;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--white);
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   position: relative;
@@ -346,7 +336,6 @@ nav {
   font-weight: bold;
   border: 2px var(--yellow) solid !important;
   background-color: var(--yellow) !important;
-
 }
 
 #quiz #btn {
@@ -360,7 +349,6 @@ nav {
   right: 0;
   left: 0;
   padding: 1rem 2rem;
-
 }
 #quiz #btn button {
   width: 20%;
@@ -384,92 +372,83 @@ nav {
   cursor: not-allowed;
 }
 
-.multipleAnswers{
-  display: flex;
+.multipleAnswers {
   text-align: center;
-  justify-content: center;
-  background-color: rgb(88, 88, 88);
-  color:var(--yellow); 
+  background-color: var(--yellow);
+  color: var(--white);
 }
 
-/*ENd*/
 .listQuesAndAnswersEnd {
   margin-bottom: 4rem;
   background-color: var(--primary-color);
   width: 60%;
   height: 100%;
 }
-.listQuesAndAnswersEnd h2{
+.listQuesAndAnswersEnd h2 {
   font-size: 1.2rem;
   font-weight: bold;
-  color: white;
+  color: var(--white);
   padding: 1rem 1rem 1rem 2rem;
   background-color: var(--primary-color);
 }
 
-
-.listQuesAndAnswersEnd ul{
-  width: 100%; 
+.listQuesAndAnswersEnd ul {
+  width: 100%;
   border: 2px var(--primary-color) solid;
 }
-.listQuesAndAnswersEnd ul li{
+.listQuesAndAnswersEnd ul li {
   padding: 1rem 0rem 1rem 1rem;
 }
-
-
-/* circular progress */
 
 #result {
   background-image: none;
   overflow: auto;
-  background-color:white;
+  background-color: var(--white);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 2rem 0 ;
-
+  padding: 1rem 2rem 0;
 }
 
 .bodyEnd {
   background-image: none;
   border: 2px red solid;
-  background-color: white;
+  background-color: var(--white);
   overflow: auto;
 }
 
-/*containerResultEnd*/
 
-#h2Result{
+#h2Result {
   text-align: center;
   font-size: 3rem;
 }
 
-.hehresult{
+.hehresult {
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
-.fkndn{
+.fkndn {
   width: 100%;
 }
 .containerResultEnd {
   width: 100%;
   height: 100%;
-  color: black; 
-  background-color: white;
+  color: black;
+  background-color: var(--white);
 }
 
-.containerResultEnd ul{
+.containerResultEnd ul {
   border: 2px brown solid;
   border: 2px var(--primary-color) solid;
   padding: 2rem;
-  background-color: white;
+  background-color: var(--white);
   list-style-type: circle;
 }
-.containerResultEnd ul li{
+.containerResultEnd ul li {
   margin-bottom: 1rem;
 }
 
@@ -477,25 +456,22 @@ nav {
   color: red;
 }
 
-.button{
+.button {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--white);
   border: none;
   padding: 0.7rem;
   border-radius: 0.5rem;
 }
-button:hover{
+button:hover {
   background-color: var(--yellow);
   transition: 0.3s;
 }
-/*  myyy */
-
-/* responsive */
 @media (max-width: 768px) {
   .bodyIndex {
     background-color: var(--primary-color);
     background-image: none;
-    color: white;
+    color: var(--white);
   }
 
   .intro2 {
@@ -506,7 +482,7 @@ button:hover{
     height: 4rem;
   }
   header {
-    border-bottom: 2px white solid;
+    border-bottom: 2px var(--white) solid;
   }
   nav {
     flex-direction: column;
@@ -525,7 +501,7 @@ button:hover{
 
   h1 {
     font-size: 2rem;
-    color: white;
+    color: var(--white);
     margin-top: 2rem;
   }
   h2 {
@@ -560,14 +536,14 @@ button:hover{
     width: 90%;
   }
 
-  #settings .nameUser{
+  #settings .nameUser {
     width: 90%;
   }
 
-  #settings #startQuiz{
+  #settings #startQuiz {
     width: 70%;
   }
-  
+
   #quiz {
     width: 100%;
     min-height: 100%;
@@ -583,7 +559,7 @@ button:hover{
     padding-left: 2rem;
   }
 
-  #quiz #btn{
+  #quiz #btn {
     align-items: center;
     position: relative;
     top: 0;
@@ -598,9 +574,8 @@ button:hover{
     width: 100%;
   }
 
-  .listQuesAndAnswersEnd{
+  .listQuesAndAnswersEnd {
     width: 100%;
     height: 100%;
   }
-  
 }

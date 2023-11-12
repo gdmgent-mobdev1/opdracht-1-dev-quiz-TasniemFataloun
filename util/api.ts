@@ -7,8 +7,6 @@ export const getData = async (
   const res = await fetch(
     `https://quizapi.io/api/v1/questions?apiKey=${API_Key}&category=${category}&difficulty=${difficulty}&limit=${number}`
   );
-  /* const data = await res.json();
-    return data; */
 
   if (res.ok) {
     const data = await res.json();
