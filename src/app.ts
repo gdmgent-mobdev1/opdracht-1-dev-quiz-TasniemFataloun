@@ -10,7 +10,6 @@ import {
 } from "../util/localStorag";
 import { getData } from "../util/api";
 
-
 type QuizUi = {
   question: string;
   category: string;
@@ -107,12 +106,12 @@ const SetQuiz = () => {
     prev.disabled = currentQuestionIndex === 0;
   }
   if (next) {
-    next.disabled = currentQuestionIndex === arrayQuizSetting.length - 1; 
+    next.disabled = currentQuestionIndex === arrayQuizSetting.length - 1;
   }
   //begin: eerste vraag
   const currentQuestion = arrayQuizSetting[currentQuestionIndex];
 
-  if (questionText) questionText.textContent = currentQuestion.question; 
+  if (questionText) questionText.textContent = currentQuestion.question;
 
   // see the number of the question
   const questionNumber = document.getElementById("questionNumber");
@@ -262,9 +261,9 @@ end?.addEventListener("click", () => {
         const answerItem = document.createElement("li");
         answerItem.textContent = q.answers[i];
 
-        q.selectedAnswer.forEach((element:any) => {
+        q.selectedAnswer.forEach((element: any) => {
           if (i == element) {
-            answerItem.classList.add("selectedAnswerEnd"); 
+            answerItem.classList.add("selectedAnswerEnd");
             if (q.correct_answers[`${element}_correct`] === "true") {
               const correctAnswer = document.createElement("span");
               correctAnswer.classList.add("correctAnswer");
@@ -280,7 +279,7 @@ end?.addEventListener("click", () => {
               wrongAnswer.textContent = "            'WRONG ANSWER'";
               answerItem.appendChild(wrongAnswer);
             }
-          };
+          }
         });
         //not selected
         if (q.correct_answers[`${i}_correct`] === "true") {
@@ -325,7 +324,6 @@ end?.addEventListener("click", () => {
   if (score >= 50) {
     resultValue.textContent = "Good job!";
   }
-  
 });
 
 const restart = document.getElementById("restart");
@@ -344,7 +342,7 @@ restart?.addEventListener("click", () => {
   if (settings) settings.style.display = "flex";
   if (result) result.style.display = "none";
   //clear the array of the quiz settings and the current question index to start the quiz again
-  arrayQuizSetting.forEach((element:any) => element.selectedAnswer = [] );
+  arrayQuizSetting.forEach((element: any) => (element.selectedAnswer = []));
   arrayQuizSetting = [];
 
   currentQuestionIndex = 0;

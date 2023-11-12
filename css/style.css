@@ -15,7 +15,6 @@
   --h1: 3rem;
   --h2: 1.5rem;
   --text: 1.1rem;
-
 }
 
 h1 {
@@ -419,7 +418,6 @@ nav {
   background-color: var(--white);
   overflow: auto;
 }
-
 
 #h2Result {
   text-align: center;
